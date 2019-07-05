@@ -17,20 +17,20 @@ import os
 from _ast import Load
 
 class SSRS():
-    '''
-    Create a SOAP connection to a SSRS (Microsoft Reporting Services)
+	'''
+	Create a SOAP connection to a SSRS (Microsoft Reporting Services)
 
-    Example of usage on SSRS 2008:
-        RS = SSRS(ReportService   = 'http://localhost/ReportinServices/ReportService2010.asmx?wsdl', 
-                  ReportExecution = 'http://myserver/reportserver/ReportExecution2005.asmx?wsdl',
-                  user            = 'user@domain.com', 
-                  key_password    = 'myfreakingpassword'
-				  domain          = 'mydomain'
-                )
+	Example of usage on SSRS 2008:
+		RS = SSRS(ReportService	  = 'http://localhost/ReportinServices/ReportService2010.asmx?wsdl', 
+				  ReportExecution = 'http://myserver/reportserver/ReportExecution2005.asmx?wsdl',
+				  user			  = 'user@domain.com', 
+				  key_password	  = 'myfreakingpassword'
+				  domain		  = 'mydomain'
+				)
 
-    '''
+	'''
 
-    def __init__(self, ReportService, ReportExecution, user, key_password, domain=None, verbose=True):
+	def __init__(self, ReportService, ReportExecution, user, key_password, domain=None, verbose=True):
 		
 		self.verbose = verbose
 		servsession = requests.Session()
@@ -304,6 +304,6 @@ class SSRS():
 				print(msg)
 
 			return
-        
-        
-        
+		
+		
+		
