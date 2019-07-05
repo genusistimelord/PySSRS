@@ -9,7 +9,7 @@ with open('README.md') as readme_file:
 with open('HISTORY.md') as history_file:
     history = history_file.read()
 
-requirements = ['suds-py3', 'requests', 'requests_ntlm', 'suds_requests' ]
+requirements = ['suds-py3', 'requests', 'requests_ntlm', '-e https://github.com/genusistimelord/suds_requests3/zipball/master' ]
 
 test_requirements = [
     # TODO: put package test requirements here
