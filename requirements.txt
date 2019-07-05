@@ -1,4 +1,4 @@
 requests
 requests_ntlm
--e https://github.com/genusistimelord/suds_requests3/zipball/master
+https://github.com/genusistimelord/suds_requests3/zipball/master
 suds-py3
