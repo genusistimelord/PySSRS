@@ -1,1 +1,4 @@
+requests
+requests_ntlm
+suds_requests
 suds-py3

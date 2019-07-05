@@ -1,9 +1,9 @@
 # PySSRS
-Microsoft Reporting Services (SSRS) RPC trough SOAP
+Microsoft Reporting Services (SSRS) RPC trough SOAP with update to fix ntlm issue on python 3.6+
 
 ## Installation
 1. Make sure you have Python 3+ installed
-2. Run ```pip install PySSRS```
+2. Run ```pip install https://github.com/genusistimelord/PySSRS/zipball/master```
 
 ### Connecting to SSRS
 You can use it as a facilitator to make SOAP RPCs.
@@ -16,8 +16,9 @@ Service   = 'http://localhost/ReportinServices/ReportService2010.asmx?wsdl'
 Execution = 'http://myserver/reportserver/ReportExecution2005.asmx?wsdl'
 user      = 'user@contoso.com'
 password  = '@password2017'
+domain    = 'mydomain' Use this only if you are needing NTLM otherwise for regular http auth dont use.
 
-RS = SSRS(Service, Execution, user, password)
+RS = SSRS(Service, Execution, user, password, domain)
 result = RS.ServiceClient.service.ListChildren(dir, recursive)
 
 for item in result.CatalogItem:
@@ -31,12 +32,16 @@ These functions are available by now:
 
 Function      | Objective                      | Return Type
 --------------|--------------------------------|------------
-ListMethods() | List all SOAP procedures | List []
+ListServiceMethods() | List all SOAP procedures for ServiceClient | List []
+ListExecutionMethods() | List all SOAP procedures for ExecutionClient | List []
 DirItems() | List all objects in a directory | Dictionary {}
 Find() | Find for a item by it's name | Dictionary {}
 GetParameters() | Return all parameters from a Report object | Dictionary {}
 RequestReport() | Execute a report from SSRS | Report Object - Used to suply RenderReport()
 RenderReport() | Render a Requested Report | Dictionary {}
+ListExtensions() | Retrieve Usable Render Extensions | Dictionary {}
+FlushCache() | Flushes the reports Data | No Return
+FlushMultiCache() | Flushes list of reports Data | No Return
 
 ### Rendering Reports
 Now we can load and render report with this module. Please, check **samples/LoadReport.py** to see how it works!
@@ -53,8 +58,9 @@ ServiceWSDL    = 'http://localhost/ReportinServices/ReportService2010.asmx?wsdl'
 ExecutionWSDL  = 'http://myserver/reportserver/ReportExecution2005.asmx?wsdl'
 user = 'user@domain.com
 psw  = '@password2017'
+domain = 'domain' Use this if you are needing NTLM otherwise regular http auth dont use.
 
-RS = SSRS(ServiceWSDL, ExecutionWSDL, user, psw)
+RS = SSRS(ServiceWSDL, ExecutionWSDL, user, psw, domain)
 
 '''
 Return a LIST with all available SOAP procedures

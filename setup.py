@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
 from setuptools import setup, find_packages
-
 
 with open('README.md') as readme_file:
     readme = readme_file.read()
@@ -11,7 +9,7 @@ with open('README.md') as readme_file:
 with open('HISTORY.md') as history_file:
     history = history_file.read()
 
-requirements = ['suds-py3']
+requirements = ['suds-py3', 'requests', 'requests_ntlm', 'suds_requests' ]
 
 test_requirements = [
     # TODO: put package test requirements here
@@ -19,12 +17,12 @@ test_requirements = [
 
 setup(
     name='pySSRS',
-    version='0.1.0',
+    version='0.2.0',
     description=('Python SSRS integration'
                  'using SOAP RPCs'),
     long_description=readme + '\n\n' + history,
-    author="Fabricio Roberto reinert",
-    author_email='fabricio.reinert@live.com',
+    author="Fabricio Roberto reinert and Andrew Wheeler",
+    author_email='genusistimelord@gmail.com',
     url='https://github.com/FRReinert/PySSRS/',
     packages=find_packages(),
     include_package_data=True,
