@@ -17,13 +17,13 @@ test_requirements = [
 
 setup(
     name='pySSRS',
-    version='0.2.0',
+    version='2.0.0',
     description=('Python SSRS integration'
                  'using SOAP RPCs'),
     long_description=readme + '\n\n' + history,
     author="Fabricio Roberto reinert and Andrew Wheeler",
     author_email='genusistimelord@gmail.com',
-    url='https://github.com/FRReinert/PySSRS/',
+    url='https://github.com/genusistimelord/PySSRS/',
     packages=find_packages(),
     include_package_data=True,
     install_requires=requirements,
@@ -31,11 +31,11 @@ setup(
     zip_safe=False,
     keywords='SSRS, Microsoft, Python, SOAP, RPC, Reporting, Services',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 2 - Release',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
     test_suite='tests.test_app.tests',
     tests_require=test_requirements
