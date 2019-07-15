@@ -3,12 +3,6 @@
 
 from setuptools import setup, find_packages
 
-with open('README.md') as readme_file:
-    readme = readme_file.read()
-
-with open('HISTORY.md') as history_file:
-    history = history_file.read()
-
 requirements = ['suds-py3', 'requests', 'requests_ntlm', 'suds_requests4' ]
 
 test_requirements = [
@@ -20,7 +14,7 @@ setup(
     version='2.0.0',
     description=('Python SSRS integration'
                  'using SOAP RPCs'),
-    long_description=readme + '\n\n' + history,
+    long_description='Fixed version of pySSRS please see git for documentation',
     author="Fabricio Roberto reinert and Andrew Wheeler",
     author_email='genusistimelord@gmail.com',
     url='https://github.com/genusistimelord/PySSRS/',
@@ -30,8 +24,9 @@ setup(
     license="MIT license",
     zip_safe=False,
     keywords='SSRS, Microsoft, Python, SOAP, RPC, Reporting, Services',
+	python_requires='>=3.7',
     classifiers=[
-        'Development Status :: 2 - Release',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
