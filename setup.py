@@ -16,7 +16,7 @@ test_requirements = [
 ]
 
 setup(
-    name='pySSRS',
+    name='pySSRS2',
     version='2.0.0',
     description=('Python SSRS integration'
                  'using SOAP RPCs'),
