@@ -31,11 +31,11 @@ class SSRS():
 	'''
 
 	def __init__(self, ReportService, ReportExecution, user, key_password, domain=None, verbose=True):
-		
+		self.reportpath = ''
 		self.verbose = verbose
 		servsession = requests.Session()
 		execsession = requests.Session()
-		log.basicConfig(filename = 'SSRS.log', level = log.INFO)
+		log.basicConfig(filename = 'SSRS.log', level = log.ERROR)
 
 		if domain:
 			user = '{}\\{}'.format(domain, user)
@@ -205,11 +205,12 @@ class SSRS():
 
 	def RequestReport(self, path):
 		try:
+			self.reportpath = path
 			return self.ExecutionClient.service.LoadReport(path, None)
 		except Exception as e:
 			msg = "Could not Load the Report: %s" % e.args
 			log.error(msg)
-			
+			log.error(self.reportpath)
 			if self.verbose:	 
 				print(msg)
 			
@@ -233,25 +234,28 @@ class SSRS():
 		
 		# Set parameters
 		params = ''
-		for k, v in parameters['parameters'].items():
+		for k in parameters['parameters']:
 			params =  params +'''
 			<rep:ParameterValue>
 			   <rep:Name>%s</rep:Name>
 			   <rep:Value>%s</rep:Value>
 			</rep:ParameterValue>
-			''' % (k, v)
+			''' % (k[0], k[1])
 		
 		param_xml = schemas.xml_Execute_Report_Parameter  
 		param_xml = param_xml.format(LoadedReport.ExecutionID, params)
 		
+		log.error(param_xml)
 		try:
 			setparam = self.ExecutionClient.service.SetExecutionParameters(__inject={'msg': param_xml})
 		except Exception as e:
 			msg = "Could not Send Parameters: %s" % e.args
 			log.error(msg)
+			log.error(self.reportpath)
 			
 			if self.verbose:	 
-				print(msg) 
+				print(msg)
+				print(self.reportpath)
 			
 			return
 		
@@ -264,7 +268,8 @@ class SSRS():
 		except Exception as e:
 			msg = "Could not Render the Report: %s" % e.args
 			log.error(msg)
-			
+			log.error(param_xml)
+			log.error(self.reportpath)
 			if self.verbose:	 
 				print(msg) 
 			
