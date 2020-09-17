@@ -3,7 +3,7 @@
 
 from setuptools import setup, find_packages
 
-requirements = ['suds-py3', 'requests', 'requests_ntlm', 'suds_requests4' ]
+requirements = ['suds-community', 'requests', 'requests_ntlm', 'suds_requests4' ]
 
 test_requirements = [
     # TODO: put package test requirements here
