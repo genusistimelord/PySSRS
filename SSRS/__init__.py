@@ -4,6 +4,7 @@ from suds.client import Client
 from suds.sax.text import Text
 from suds.sax.element import Element
 from suds.transport.http import HttpAuthenticated
+from suds import byte_str
 import requests
 from requests_ntlm import HttpNtlmAuth
 import suds_requests
@@ -247,6 +248,7 @@ class SSRS():
 		
 		log.error(param_xml)
 		try:
+			param_xml = byte_str(param_xml)
 			setparam = self.ExecutionClient.service.SetExecutionParameters(__inject={'msg': param_xml})
 		except Exception as e:
 			msg = "Could not Send Parameters: %s" % e.args
@@ -264,6 +266,7 @@ class SSRS():
 		
 		# Render the report by its ExecutionID
 		try:
+			xml = byte_str(xml)
 			result = self.ExecutionClient.service.Render(__inject={'msg': xml})
 		except Exception as e:
 			msg = "Could not Render the Report: %s" % e.args
