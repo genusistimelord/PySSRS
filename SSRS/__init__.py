@@ -16,6 +16,7 @@ import uuid
 import sys
 import os
 from _ast import Load
+from xml.sax.saxutils import escape
 
 class SSRS():
 	'''
@@ -241,7 +242,7 @@ class SSRS():
 			   <rep:Name>%s</rep:Name>
 			   <rep:Value>%s</rep:Value>
 			</rep:ParameterValue>
-			''' % (k[0], k[1])
+			''' % (escape(k[0]), escape(k[1]))
 		
 		param_xml = schemas.xml_Execute_Report_Parameter  
 		param_xml = param_xml.format(LoadedReport.ExecutionID, params)
