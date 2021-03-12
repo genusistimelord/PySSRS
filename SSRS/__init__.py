@@ -258,7 +258,7 @@ class SSRS():
             setparam = self.ExecutionClient.service.SetExecutionParameters(__inject={
                                                                            'msg': param_xml})
         except Exception as e:
-            msg = "Could not Send Parameters: %s Within: %s Report Path: %s".format(
+            msg = "Could not Send Parameters: {} Within: {} Report Path: {}".format(
                 e.args, param_xml, self.reportpath)
             log.error(msg)
 
@@ -276,7 +276,7 @@ class SSRS():
             xml = byte_str(xml)
             result = self.ExecutionClient.service.Render(__inject={'msg': xml})
         except Exception as e:
-            msg = "Could not Render the Report: %s Within: %s Report Path: %s".format(
+            msg = "Could not Render the Report: {} Within: {} Report Path: {}".format(
                 e.args, param_xml, self.reportpath)
             log.error(msg)
 
